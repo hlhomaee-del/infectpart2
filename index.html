@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infectious Diseases NCLEX — Part 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0d2b4e;--navy-l:#e8f0fb;
+  --teal:#0b7285;--teal-l:#e5f8fb;
+  --red:#c0392b;--red-l:#fdf0ef;
+  --green:#1a7a35;--green-l:#edf7f0;
+  --purple:#6c3483;--purple-l:#f4eef9;
+  --amber:#b7770d;--amber-l:#fef9eb;
+  --blue:#1565c0;--blue-l:#e8f1fb;
+  --orange:#c0550a;--orange-l:#fef3ec;
+  --border:#d5dde8;--page:#f0f4f8;--white:#fff;
+  --ink:#1a232e;--ink2:#3d4f60;--ink3:#607080;
+  --shadow:0 2px 10px rgba(13,43,78,.1);
+  --shadow-lg:0 8px 28px rgba(13,43,78,.15);
+  --r:12px;--r-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',system-ui,sans-serif;background:var(--page);color:var(--ink);min-height:100vh;font-size:15px}
+h1,h2,h3,h4{font-family:'Merriweather',Georgia,serif;line-height:1.25}
+#hdr{background:linear-gradient(135deg,#0d2b4e 0%,#0b4f8a 60%,#0b7285 100%);color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:200;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+#hdr h1{font-size:clamp(.85rem,2vw,1.1rem);font-weight:700;font-family:'Nunito',sans-serif}
+#hdr h1 em{font-style:normal;color:#64d8e8;font-family:'Merriweather',serif}
+.hdr-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.part-badge{background:linear-gradient(90deg,#0b7285,#0b4f8a);color:#fff;padding:3px 10px;border-radius:20px;font-size:.72rem;font-weight:800;letter-spacing:.5px;border:1px solid rgba(255,255,255,.3)}
+.series-nav{display:flex;gap:6px}
+.snav-btn{padding:4px 10px;border-radius:10px;font-size:.72rem;font-weight:700;border:none;cursor:pointer;color:#fff;background:rgba(255,255,255,.15);transition:background .15s;font-family:'Nunito',sans-serif}
+.snav-btn:hover{background:rgba(255,255,255,.25)}
+.snav-btn.cur{background:rgba(11,114,133,.6)}
+#nav{background:var(--white);border-bottom:2px solid var(--border);overflow-x:auto;white-space:nowrap;padding:0 14px;position:sticky;top:57px;z-index:190;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.tab{display:inline-block;padding:11px 13px;cursor:pointer;font-size:.76rem;font-weight:700;color:var(--ink3);border-bottom:3px solid transparent;transition:all .18s;user-select:none;text-transform:uppercase;letter-spacing:.4px}
+.tab:hover{color:var(--navy);border-bottom-color:#93c5fd}
+.tab.active{color:var(--navy);border-bottom-color:var(--navy)}
+.sec{display:none;padding:22px;max-width:1100px;margin:0 auto;animation:fi .3s ease}
+.sec.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.sec-title{font-size:clamp(1.3rem,3vw,1.7rem);color:var(--navy);margin-bottom:4px}
+.sec-sub{color:var(--ink3);margin-bottom:20px;font-size:.91rem;line-height:1.6;max-width:720px}
+.sec-label{display:inline-block;background:var(--teal);color:#fff;padding:2px 10px;border-radius:4px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;font-family:'Nunito',sans-serif}
+.card{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;margin-bottom:14px;border:1px solid var(--border)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:640px){.g2,.g3,.card-grid{grid-template-columns:1fr}}
+.ib{border-radius:var(--r-sm);padding:12px 15px;margin:8px 0;font-size:.87rem;line-height:1.7}
+.ib-red{background:var(--red-l);border-left:4px solid var(--red);color:#7f1d1d}
+.ib-green{background:var(--green-l);border-left:4px solid var(--green);color:#14532d}
+.ib-amber{background:var(--amber-l);border-left:4px solid #d97706;color:var(--amber)}
+.ib-blue{background:var(--blue-l);border-left:4px solid var(--blue);color:#1e3a8a}
+.ib-purple{background:var(--purple-l);border-left:4px solid var(--purple);color:#4a1d96}
+.ib-teal{background:var(--teal-l);border-left:4px solid var(--teal);color:#134e4a}
+.ib-orange{background:var(--orange-l);border-left:4px solid var(--orange);color:#7c2d12}
+.lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink3);margin-bottom:3px;margin-top:10px;font-family:'Nunito',sans-serif}
+.lbl:first-child{margin-top:0}
+ul.lst{list-style:none;padding:0}
+ul.lst li{padding:3px 0 3px 18px;position:relative;font-size:.87rem;line-height:1.6}
+ul.lst li::before{content:"▸";position:absolute;left:0;color:var(--teal);font-size:.75rem;top:5px}
+hr.dv{border:none;border-top:1px solid var(--border);margin:14px 0}
+.tag{display:inline-block;padding:2px 9px;border-radius:8px;font-size:.69rem;font-weight:700;margin:2px;letter-spacing:.2px}
+.tag-red{background:var(--red-l);color:var(--red)}.tag-green{background:var(--green-l);color:var(--green)}
+.tag-blue{background:var(--blue-l);color:var(--blue)}.tag-amber{background:var(--amber-l);color:var(--amber)}
+.tag-purple{background:var(--purple-l);color:var(--purple)}.tag-teal{background:var(--teal-l);color:var(--teal)}
+.tag-navy{background:var(--navy-l);color:var(--navy)}.tag-orange{background:var(--orange-l);color:var(--orange)}
+.acc{border:1px solid var(--border);border-radius:var(--r-sm);margin-bottom:8px;overflow:hidden}
+.acc-hd{padding:12px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.9rem;background:#fafbfc;transition:background .15s;user-select:none}
+.acc-hd:hover{background:var(--navy-l);color:var(--navy)}
+.acc.open .acc-hd{background:var(--navy-l);color:var(--navy)}
+.acc-body{display:none;padding:14px 16px;border-top:1px solid var(--border);font-size:.87rem;line-height:1.75}
+.acc.open .acc-body{display:block}
+.acc-arr{font-size:.75rem;color:#94a3b8;transition:transform .18s;flex-shrink:0;margin-left:8px}
+.acc.open .acc-arr{transform:rotate(180deg)}
+.dc{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px;border-left:5px solid #ccc}
+.dc-hd{padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;user-select:none}
+.dc-hd:hover{background:#fafbfc}
+.dc-title{font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:7px}
+.dc-arr{font-size:.85rem;color:#94a3b8;transition:transform .2s;flex-shrink:0}
+.dc.open .dc-arr{transform:rotate(180deg)}
+.dc-body{display:none;padding:0 16px 16px;border-top:1px solid var(--border)}
+.dc.open .dc-body{display:block}
+.nclex-hint{background:linear-gradient(90deg,#eff6ff,#e0f2fe);border:2px solid var(--blue);border-radius:var(--r-sm);padding:10px 13px;margin:8px 0;font-size:.86rem;line-height:1.65}
+.nclex-hint-title{font-weight:800;color:var(--blue);margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.iso-card{border-radius:var(--r);padding:16px;margin-bottom:12px;border:2px solid}
+.iso-air{background:linear-gradient(135deg,#fef2f2,#fee2e2);border-color:var(--red)}
+.iso-drop{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:var(--blue)}
+.iso-contact{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-color:var(--green)}
+.iso-std{background:linear-gradient(135deg,#fefce8,#fef9c3);border-color:#ca8a04}
+.iso-neut{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:var(--purple)}
+.iso-title{font-weight:800;font-size:1rem;margin-bottom:8px;font-family:'Nunito',sans-serif}
+/* Match game */
+.match-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;padding:8px;border-radius:var(--r-sm);transition:background .15s}
+.match-disease{flex:1;min-width:150px;font-weight:700;font-size:.87rem}
+.match-opts{display:flex;gap:6px;flex-wrap:wrap}
+.mbtn{padding:5px 12px;border-radius:12px;border:2px solid var(--border);background:var(--white);font-size:.76rem;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .18s}
+.mbtn:hover{border-color:var(--navy);background:var(--navy-l)}
+.mbtn.correct{border-color:var(--green)!important;background:var(--green-l)!important;color:var(--green)}
+.mbtn.wrong{border-color:var(--red)!important;background:var(--red-l)!important;color:var(--red)}
+.mbtn.reveal{border-color:var(--green)!important;background:var(--green-l)!important;color:var(--green)}
+/* Stat chips */
+.stat-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.stat-chip{background:var(--white);border-radius:var(--r-sm);padding:11px 17px;box-shadow:var(--shadow);text-align:center;flex:1;min-width:100px;border:1px solid var(--border)}
+.stat-num{font-size:1.6rem;font-weight:800;font-family:'Merriweather',serif}
+.stat-lbl{font-size:.7rem;color:var(--ink3);font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+.score-banner{background:linear-gradient(135deg,var(--navy),#1e5fa6);color:#fff;border-radius:var(--r);padding:14px 20px;display:flex;align-items:center;gap:20px;margin-bottom:16px;flex-wrap:wrap}
+.sb-num{font-size:2rem;font-weight:800;font-family:'Merriweather',serif;line-height:1}
+.sb-lbl{font-size:.78rem;opacity:.85}
+.prog-bar{width:100%;height:8px;background:rgba(255,255,255,.25);border-radius:5px;overflow:hidden;margin-top:5px}
+.prog-fill{height:100%;border-radius:5px;background:#fff;transition:width .5s ease}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <h1>🦠 <em>Infectious Diseases</em> NCLEX Interactive Mastery Lab</h1>
+  <div class="hdr-right">
+    <div class="part-badge">PART 2 OF 3</div>
+    <div class="series-nav">
+      <button class="snav-btn" onclick="window.location='infectious_part1.html'">← Part 1</button>
+      <button class="snav-btn cur">Part 2</button>
+      <button class="snav-btn" onclick="window.location='infectious_part3.html'">Part 3 →</button>
+    </div>
+  </div>
+</header>
+
+<nav id="nav">
+  <span class="tab active" data-s="s6">🟢 Contact</span>
+  <span class="tab" data-s="s7">⚠️ Sepsis</span>
+  <span class="tab" data-s="s8">🔬 Diagnostics</span>
+  <span class="tab" data-s="s9">💊 Medications</span>
+  <span class="tab" data-s="s10">🧤 Isolation/PPE</span>
+</nav>
+
+<!-- ══════ S6: CONTACT PRECAUTIONS ══════ -->
+<div class="sec active" id="s6">
+  <div class="sec-label">Section 6</div>
+  <h2 class="sec-title">Contact Precaution Infections</h2>
+  <p class="sec-sub">C. difficile, MRSA, and VRE are the most NCLEX-tested contact-precaution infections. The C. diff soap-and-water rule is tested on nearly every NCLEX exam.</p>
+
+  <div class="ib-red"><strong>🚨 NCLEX Critical Safety Point:</strong> C. difficile produces SPORES that are <strong>NOT killed by alcohol-based hand sanitizer.</strong> You MUST wash hands with SOAP AND WATER when caring for C. diff patients. This single fact appears on nearly every NCLEX exam.</div>
+
+  <!-- C. diff -->
+  <div class="dc" id="cdiff-dc" style="border-left-color:var(--green)">
+    <div class="dc-hd" onclick="toggleDC('cdiff-dc')">
+      <div class="dc-title">🟢 C. difficile (C. diff) — Contact Precautions + Soap & Water</div>
+      <span class="dc-arr">▼</span>
+    </div>
+    <div class="dc-body">
+      <div class="ib-green"><strong>Simple Explanation:</strong> C. diff is a spore-forming bacterium that causes severe diarrhea, usually after antibiotic use disrupts the normal gut bacteria. Spores survive on surfaces for months. Alcohol hand sanitizer does NOT kill spores — soap and water is mandatory.</div>
+      <div class="g2">
+        <div>
+          <div class="lbl">Transmission</div>
+          <ul class="lst">
+            <li>Fecal-oral — spores survive on surfaces for months</li>
+            <li>Contact with contaminated surfaces or equipment</li>
+            <li>Healthcare worker hands (without proper washing)</li>
+            <li>Antibiotics disrupt normal gut flora → C. diff overgrowth</li>
+          </ul>
+          <div class="lbl">Risk Factors</div>
+          <ul class="lst">
+            <li><strong>Recent antibiotic use</strong> — ANY antibiotic (clindamycin, fluoroquinolones, cephalosporins highest risk)</li>
+            <li>Hospitalization or long-term care facility</li>
+            <li>Age &gt;65</li>
+            <li>Proton pump inhibitor (PPI) use</li>
+            <li>Immunocompromised state</li>
+          </ul>
+          <div class="lbl">Hallmark Symptoms</div>
+          <ul class="lst">
+            <li><strong>Profuse watery diarrhea</strong> (≥3 loose stools/day)</li>
+            <li>Abdominal cramping and tenderness</li>
+            <li>Low-grade to high fever</li>
+            <li>Leukocytosis — WBC may be extremely elevated (20,000–50,000+)</li>
+            <li>Foul-smelling stool</li>
+          </ul>
+        </div>
+        <div>
+          <div class="lbl">Diagnostics</div>
+          <ul class="lst">
+            <li>Stool PCR for C. diff toxin A and B — most sensitive (preferred)</li>
+            <li>GDH antigen + toxin immunoassay (rapid, less sensitive)</li>
+            <li>CBC: leukocytosis (very high WBC is classic)</li>
+            <li>CT abdomen: colonic wall thickening, toxic megacolon if severe</li>
+          </ul>
+          <div class="lbl">Treatment</div>
+          <ul class="lst">
+            <li>Oral vancomycin — first-line for most C. diff</li>
+            <li>Fidaxomicin — preferred; reduces recurrence risk</li>
+            <li>Metronidazole — mild cases only (less effective than vancomycin)</li>
+            <li>Discontinue offending antibiotic if clinically possible</li>
+            <li>Fecal microbiota transplant (FMT) — recurrent C. diff</li>
+            <li><strong>NO anti-diarrheal agents</strong> — worsen disease, increase toxin retention</li>
+          </ul>
+          <div class="lbl">Priority Nursing Actions</div>
+          <ul class="lst">
+            <li>CONTACT precautions — gown and gloves upon room entry</li>
+            <li><strong>SOAP AND WATER handwashing</strong> — NO alcohol hand sanitizer</li>
+            <li>Dedicated equipment stays in the room (stethoscope, BP cuff)</li>
+            <li>Bleach-based cleaning products for environmental decontamination</li>
+            <li>Monitor for dehydration — strict I&amp;O, electrolytes</li>
+            <li>Monitor for toxic megacolon: abdominal distension + fever + high WBC + DECREASE in diarrhea (paradoxical sign)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="lbl">Complications — Red Flags</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px">
+        <span class="tag tag-red">Toxic megacolon — fever + distension + WBC &gt;30,000 = EMERGENCY</span>
+        <span class="tag tag-red">Bowel perforation → sepsis</span>
+        <span class="tag tag-orange">Severe dehydration and electrolyte imbalance</span>
+        <span class="tag tag-orange">Recurrent C. diff infection (up to 25% recurrence)</span>
+      </div>
+      <div class="lbl">Patient Teaching</div>
+      <ul class="lst">
+        <li>Only take antibiotics when prescribed — never share or save them</li>
+        <li>Wash hands with soap and water — not hand sanitizer — after bathroom use</li>
+        <li>Clean bathroom surfaces with bleach solution at home</li>
+        <li>Probiotics may reduce risk (discuss with provider)</li>
+        <li>Watch for return of symptoms after treatment — C. diff frequently recurs</li>
+      </ul>
+      <div class="nclex-hint">
+        <div class="nclex-hint-title">📘 NCLEX Pattern Recognition</div>
+        A patient on day 5 of clindamycin develops profuse, watery, foul-smelling diarrhea with temperature 38.6°C and WBC 28,000. Priority actions: Apply CONTACT precautions, collect stool specimen for C. diff toxin, wash hands with SOAP AND WATER, monitor hydration and electrolytes, do NOT give anti-diarrheal agents.
+      </div>
+    </div>
+  </div>
+
+  <!-- MRSA -->
+  <div class="dc" id="mrsa-dc" style="border-left-color:var(--amber)">
+    <div class="dc-hd" onclick="toggleDC('mrsa-dc')">
+      <div class="dc-title">🟡 MRSA — Contact Precautions, Vancomycin</div>
+      <span class="dc-arr">▼</span>
+    </div>
+    <div class="dc-body">
+      <div class="ib-amber"><strong>Simple Explanation:</strong> MRSA (Methicillin-resistant Staphylococcus aureus) is a common staph bacteria that has become resistant to many antibiotics including methicillin and oxacillin. It spreads through direct skin contact. Common in hospitals (HA-MRSA) and community settings (CA-MRSA).</div>
+      <div class="g2">
+        <div>
+          <div class="lbl">Transmission</div>
+          <ul class="lst">
+            <li>Direct contact with infected wounds or drainage</li>
+            <li>Contact with contaminated surfaces or equipment</li>
+            <li>Healthcare worker hands (most common vector)</li>
+            <li>HA-MRSA: invasive procedures, catheters, surgical wounds</li>
+            <li>CA-MRSA: skin-to-skin contact, shared equipment, crowded settings</li>
+          </ul>
+          <div class="lbl">Symptoms by Site</div>
+          <ul class="lst">
+            <li>Skin/soft tissue: painful boils, abscesses, cellulitis that FAILS typical antibiotics</li>
+            <li>Wound infections: purulent drainage, erythema, warmth</li>
+            <li>Pneumonia: severe, rapid progression in hospitalized patients</li>
+            <li>Bacteremia/sepsis: fever, hemodynamic instability</li>
+            <li>Osteomyelitis, endocarditis (hematogenous spread)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="lbl">Diagnostics</div>
+          <ul class="lst">
+            <li>Wound culture — gram-positive cocci in clusters</li>
+            <li>Antibiotic sensitivity testing — resistant to methicillin/oxacillin</li>
+            <li>Blood cultures if systemic infection suspected</li>
+            <li>Nasal swab for MRSA screening/colonization on admission</li>
+          </ul>
+          <div class="lbl">Treatment</div>
+          <ul class="lst">
+            <li><strong>Vancomycin IV</strong> — first-line for serious/systemic MRSA</li>
+            <li>Monitor vancomycin troughs (10–20 mcg/mL; 15–20 for serious infection)</li>
+            <li>Linezolid, daptomycin — alternatives for serious infections</li>
+            <li>TMP-SMX, clindamycin — community MRSA skin infections (oral)</li>
+            <li>Decolonization: intranasal mupirocin + chlorhexidine body wash</li>
+          </ul>
+          <div class="lbl">Priority Nursing Actions</div>
+          <ul class="lst">
+            <li>CONTACT precautions — gown and gloves upon room entry</li>
+            <li>Dedicated equipment stays in room</li>
+            <li>Hand hygiene before and after all care</li>
+            <li>Aseptic technique for all wound care</li>
+            <li>Monitor vancomycin levels (trough levels)</li>
+            <li>Assess for signs of systemic spread (sepsis)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="nclex-hint">
+        <div class="nclex-hint-title">📘 NCLEX MRSA Key Facts</div>
+        MRSA wound: Contact precautions (gown + gloves). Alcohol hand sanitizer IS effective for MRSA (unlike C. diff). Vancomycin requires therapeutic drug monitoring — trough levels before 4th dose. "Red Man Syndrome" with vancomycin = slow the infusion rate and pre-medicate with diphenhydramine.
+      </div>
+    </div>
+  </div>
+
+  <!-- VRE -->
+  <div class="dc" id="vre-dc" style="border-left-color:var(--purple)">
+    <div class="dc-hd" onclick="toggleDC('vre-dc')">
+      <div class="dc-title">🟣 VRE — Contact Precautions, Vancomycin Resistant</div>
+      <span class="dc-arr">▼</span>
+    </div>
+    <div class="dc-body">
+      <div class="ib-purple"><strong>Simple Explanation:</strong> VRE (Vancomycin-resistant Enterococcus) is enterococcal bacteria resistant to vancomycin. It can colonize patients without causing infection, but causes serious infections in immunocompromised patients. Contact precautions required. Vancomycin does NOT work.</div>
+      <div class="g2">
+        <div>
+          <div class="lbl">Transmission</div>
+          <ul class="lst">
+            <li>Direct contact with infected/colonized patient</li>
+            <li>Contact with contaminated surfaces (survives hours on surfaces)</li>
+            <li>Healthcare worker hands (most important vector)</li>
+            <li>Most common in: ICU, transplant, oncology, dialysis patients</li>
+          </ul>
+          <div class="lbl">Symptoms / Infections Caused</div>
+          <ul class="lst">
+            <li>Often ASYMPTOMATIC colonization (rectal or urinary)</li>
+            <li>UTI, wound infection, bacteremia when symptomatic</li>
+            <li>Endocarditis in high-risk patients</li>
+            <li>Serious when occurring in immunocompromised</li>
+          </ul>
+        </div>
+        <div>
+          <div class="lbl">Treatment</div>
+          <ul class="lst">
+            <li><strong>Vancomycin does NOT work</strong> — this is the defining characteristic</li>
+            <li>Linezolid (first-line for most VRE infections)</li>
+            <li>Daptomycin (bacteremia)</li>
+            <li>Tigecycline (some infections)</li>
+          </ul>
+          <div class="lbl">Priority Nursing Actions</div>
+          <ul class="lst">
+            <li>CONTACT precautions — gown and gloves on room entry</li>
+            <li>Dedicated equipment in room — never share between patients</li>
+            <li>Enhanced environmental cleaning (bleach or EPA-approved disinfectant)</li>
+            <li>Hand hygiene with soap and water OR alcohol rub (both effective for VRE)</li>
+            <li>Educate patient and family about isolation and why it is needed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="nclex-hint">
+        <div class="nclex-hint-title">📘 NCLEX VRE Key</div>
+        A patient with VRE is ordered vancomycin for another infection. The nurse should QUESTION this order — VRE is by definition vancomycin-resistant. Linezolid is the appropriate alternative. Always verify the organism's sensitivity pattern before administering antibiotics.
+      </div>
+    </div>
+  </div>
+
+  <!-- Hand Hygiene Comparison -->
+  <div class="card">
+    <h3 style="color:var(--navy);margin-bottom:14px;font-size:1rem">🖐️ Hand Hygiene Rules — The Critical Differences</h3>
+    <div class="g2">
+      <div class="ib-red">
+        <strong>❌ Alcohol Hand Sanitizer DOES NOT WORK for C. diff</strong>
+        <div style="font-size:.84rem;margin-top:8px;line-height:1.65">C. difficile forms hardy SPORES that alcohol cannot penetrate or destroy. Using only hand sanitizer when caring for C. diff patients allows spore transmission and spreads infection to other patients. SOAP AND WATER is mandatory — the physical washing action removes spores from hands.</div>
+      </div>
+      <div class="ib-green">
+        <strong>✅ When to Use Soap and Water vs Alcohol Rub</strong>
+        <ul class="lst" style="margin-top:8px">
+          <li><strong>SOAP AND WATER required:</strong> C. diff, norovirus, when hands are visibly soiled, after restroom use</li>
+          <li><strong>Alcohol hand rub preferred:</strong> MRSA, VRE, most other pathogens when hands are not visibly soiled</li>
+          <li><strong>Either is acceptable:</strong> Most standard precaution situations</li>
+          <li>Remember: Soap and water is NEVER wrong — it is always appropriate</li>
+        </ul>
+      </div>
+    </div>
+    <div style="overflow-x:auto;margin-top:12px">
+      <table style="width:100%;border-collapse:collapse;font-size:.83rem">
+        <thead><tr style="background:var(--navy);color:#fff"><th style="padding:8px 12px;text-align:left">Organism</th><th style="padding:8px 12px;text-align:left">Precaution</th><th style="padding:8px 12px;text-align:left">Hand Hygiene</th><th style="padding:8px 12px;text-align:left">Key Room Requirement</th></tr></thead>
+        <tbody>
+          <tr style="background:#fff"><td style="padding:7px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--green)">C. difficile</td><td style="padding:7px 12px;border-bottom:1px solid var(--border)">Contact</td><td style="padding:7px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--red)">SOAP AND WATER ONLY</td><td style="padding:7px 12px;border-bottom:1px solid var(--border)">Bleach cleaning; dedicated equipment</td></tr>
+          <tr style="background:#fafbfc"><td style="padding:7px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber)">MRSA</td><td style="padding:7px 12px;border-bottom:1px solid var(--border)">Contact</td><td style="padding:7px 12px;border-bottom:1px solid var(--border);color:var(--green)">Soap or alcohol (both OK)</td><td style="padding:7px 12px;border-bottom:1px solid var(--border)">Private room; dedicated equipment</td></tr>
+          <tr style="background:#fff"><td style="padding:7px 12px;font-weight:700;color:var(--purple)">VRE</td><td style="padding:7px 12px">Contact</td><td style="padding:7px 12px;color:var(--green)">Soap or alcohol (both OK)</td><td style="padding:7px 12px">Private room; enhanced cleaning</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S7: SEPSIS ══════ -->
+<div class="sec" id="s7">
+  <div class="sec-label">Section 7</div>
+  <h2 class="sec-title">Sepsis & Systemic Infection</h2>
+  <p class="sec-sub">Sepsis is a life-threatening emergency. Early recognition and immediate intervention — especially antibiotics and fluids — are the most important nursing actions.</p>
+
+  <div class="ib-red"><strong>🚨 NCLEX Emergency Pattern:</strong> Fever OR hypothermia + tachycardia + tachypnea + altered mental status + hypotension = SEPSIS until proven otherwise. Draw blood cultures, start broad-spectrum antibiotics within 1 hour, and give IV fluid bolus. Every hour of delay increases mortality.</div>
+
+  <div class="dc" id="sepsis-dc" style="border-left-color:var(--red)">
+    <div class="dc-hd" onclick="toggleDC('sepsis-dc')">
+      <div class="dc-title">⚠️ Sepsis — Complete Clinical Reference</div>
+      <span class="dc-arr">▼</span>
+    </div>
+    <div class="dc-body">
+      <div class="ib-red"><strong>Simple Explanation:</strong> Sepsis is when an infection triggers a chain reaction throughout the entire body, damaging organs. It progresses rapidly from manageable to life-threatening. The nurse's ability to recognize early signs and act immediately saves lives.</div>
+      <div class="g2">
+        <div>
+          <div class="lbl">Pathophysiology (Simplified)</div>
+          <ul class="lst">
+            <li>Infection → immune system overreacts → widespread inflammation</li>
+            <li>Vasodilation → ↓vascular resistance → hypotension</li>
+            <li>Capillary leak → fluid shifts → further hypoperfusion</li>
+            <li>Microvascular clotting → organ ischemia → organ dysfunction</li>
+            <li>End result: multi-organ failure if untreated</li>
+          </ul>
+          <div class="lbl">Early Signs of Sepsis (Act Now)</div>
+          <ul class="lst">
+            <li>Temperature &gt;38°C (100.4°F) OR &lt;36°C (96.8°F) — hypothermia is ominous</li>
+            <li>Heart rate &gt;90 bpm (tachycardia)</li>
+            <li>Respiratory rate &gt;20 breaths/min</li>
+            <li>WBC &gt;12,000 or &lt;4,000 or &gt;10% bands (immature neutrophils)</li>
+            <li>Altered mental status (confusion, restlessness, new agitation)</li>
+            <li>Elevated blood glucose without diabetes</li>
+          </ul>
+          <div class="lbl">Late Signs — Organ Failure (Critical)</div>
+          <ul class="lst">
+            <li><strong>Hypotension:</strong> SBP &lt;90 mmHg or MAP &lt;65 mmHg</li>
+            <li><strong>Oliguria:</strong> urine output &lt;0.5 mL/kg/hr for 2+ hours</li>
+            <li><strong>Elevated lactate:</strong> &gt;2 mmol/L = tissue hypoperfusion</li>
+            <li>Rising creatinine, elevated bilirubin (organ dysfunction)</li>
+            <li>Coagulation abnormalities (DIC risk)</li>
+            <li>Mottled, cyanotic extremities</li>
+          </ul>
+        </div>
+        <div>
+          <div class="lbl">qSOFA Score (Bedside Screening Tool)</div>
+          <div class="ib-blue">
+            Score 1 point each: <br>
+            • Altered mental status (GCS &lt;15)<br>
+            • Respiratory rate ≥22 breaths/min<br>
+            • Systolic BP ≤100 mmHg<br>
+            <strong>Score ≥2 = high suspicion for sepsis — escalate immediately</strong>
+          </div>
+          <div class="lbl">Sepsis Hour-1 Bundle (Priority Actions)</div>
+          <ul class="lst">
+            <li><strong>1. Measure lactate level</strong> — lactate ≥4 = septic shock territory</li>
+            <li><strong>2. Blood cultures × 2</strong> before antibiotics (from 2 different sites)</li>
+            <li><strong>3. Broad-spectrum IV antibiotics within 1 hour</strong> — do NOT delay</li>
+            <li><strong>4. IV fluid bolus: 30 mL/kg crystalloid</strong> (NS or LR) if hypotensive or lactate ≥4</li>
+            <li><strong>5. Vasopressors</strong> (norepinephrine first-line) if MAP &lt;65 after fluid resuscitation</li>
+            <li>Repeat lactate if initial &gt;2 mmol/L</li>
+          </ul>
+          <div class="lbl">Ongoing Monitoring</div>
+          <ul class="lst">
+            <li>Strict hourly urine output (goal: &gt;0.5 mL/kg/hr)</li>
+            <li>Continuous vital signs monitoring</li>
+            <li>Serial lactate levels (should improve with treatment)</li>
+            <li>Frequent neuro checks (mental status)</li>
+            <li>Skin color, temperature, capillary refill</li>
+            <li>Response to fluid resuscitation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="lbl">Sepsis → Septic Shock Progression</div>
+      <div style="background:linear-gradient(90deg,#fff7ed,#fef3ec);border-radius:var(--r-sm);padding:12px;margin-bottom:12px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.84rem">
+          <div style="background:var(--amber-l);border:2px solid #d97706;border-radius:8px;padding:7px 12px;text-align:center"><strong style="color:var(--amber)">Infection</strong><br><span style="font-size:.75rem">Source identified</span></div>
+          <span style="font-size:1.2rem;color:#94a3b8">→</span>
+          <div style="background:var(--orange-l);border:2px solid var(--orange);border-radius:8px;padding:7px 12px;text-align:center"><strong style="color:var(--orange)">Sepsis</strong><br><span style="font-size:.75rem">Organ dysfunction</span></div>
+          <span style="font-size:1.2rem;color:#94a3b8">→</span>
+          <div style="background:var(--red-l);border:2px solid var(--red);border-radius:8px;padding:7px 12px;text-align:center"><strong style="color:var(--red)">Septic Shock</strong><br><span style="font-size:.75rem">MAP &lt;65 + lactate &gt;2<br>despite fluids</span></div>
+          <span style="font-size:1.2rem;color:#94a3b8">→</span>
+          <div style="background:#fef2f2;border:2px solid #991b1b;border-radius:8px;padding:7px 12px;text-align:center"><strong style="color:#7f1d1d">Multi-Organ Failure</strong><br><span style="font-size:.75rem">30–40% mortality</span></div>
+        </div>
+      </div>
+      <div class="lbl">Patients at Highest Risk for Sepsis</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px">
+        <span class="tag tag-red">Immunocompromised (HIV, chemo, steroids)</span>
+        <span class="tag tag-red">Elderly (&gt;65)</span>
+        <span class="tag tag-red">Diabetes mellitus</span>
+        <span class="tag tag-orange">Indwelling catheters / IV lines</span>
+        <span class="tag tag-orange">Post-surgical patients</span>
+        <span class="tag tag-orange">Chronic kidney or liver disease</span>
+        <span class="tag tag-amber">ICU admission</span>
+      </div>
+      <div class="nclex-hint">
+        <div class="nclex-hint-title">📘 NCLEX Critical Reasoning — Cultures Before Antibiotics</div>
+        Blood cultures should be drawn BEFORE antibiotics if it can be done without significantly delaying treatment. In a critically ill patient, antibiotics MUST be given within 1 hour — do not delay antibiotics more than 45 minutes to get cultures. The NCLEX tests this order: cultures → antibiotics ASAP (both within the 1-hour window when possible).
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--red);margin-bottom:14px;font-size:1rem">⏱️ Sepsis Bundle — Nursing Priority Actions</h3>
+    <div class="g3">
+      <div style="background:var(--amber-l);border-radius:var(--r-sm);padding:14px;border-top:4px solid #d97706">
+        <div style="font-weight:800;color:var(--amber);margin-bottom:8px;font-size:.9rem">RECOGNIZE IT EARLY</div>
+        <ul class="lst">
+          <li>Fever OR hypothermia</li>
+          <li>Tachycardia (&gt;90 bpm)</li>
+          <li>Tachypnea (&gt;20/min)</li>
+          <li>Altered mental status</li>
+          <li>qSOFA ≥2 points</li>
+          <li>Elevated WBC or bands</li>
+        </ul>
+      </div>
+      <div style="background:var(--orange-l);border-radius:var(--r-sm);padding:14px;border-top:4px solid var(--orange)">
+        <div style="font-weight:800;color:var(--orange);margin-bottom:8px;font-size:.9rem">ACT WITHIN 1 HOUR</div>
+        <ul class="lst">
+          <li>Notify provider STAT</li>
+          <li>Draw lactate level</li>
+          <li>Blood cultures × 2 (before abx)</li>
+          <li>Start IV antibiotics</li>
+          <li>30 mL/kg IV crystalloid if hypotensive</li>
+          <li>Large-bore IV access × 2</li>
+        </ul>
+      </div>
+      <div style="background:var(--blue-l);border-radius:var(--r-sm);padding:14px;border-top:4px solid var(--blue)">
+        <div style="font-weight:800;color:var(--blue);margin-bottom:8px;font-size:.9rem">MONITOR CONTINUOUSLY</div>
+        <ul class="lst">
+          <li>Urine output q1h (goal &gt;30 mL/hr)</li>
+          <li>Serial vital signs</li>
+          <li>Repeat lactate (should decrease)</li>
+          <li>Mental status checks</li>
+          <li>Skin perfusion assessment</li>
+          <li>Response to interventions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S8: DIAGNOSTICS ══════ -->
+<div class="sec" id="s8">
+  <div class="sec-label">Section 8</div>
+  <h2 class="sec-title">Diagnostics & Labs</h2>
+  <p class="sec-sub">Understanding WHY labs are ordered and WHAT abnormal results mean drives NCLEX clinical reasoning. Every test has a purpose — know it.</p>
+
+  <div id="diag-container"></div>
+</div>
+
+<!-- ══════ S9: MEDICATIONS ══════ -->
+<div class="sec" id="s9">
+  <div class="sec-label">Section 9</div>
+  <h2 class="sec-title">Medications & Nursing Considerations</h2>
+  <p class="sec-sub">Anti-infective medications require monitoring for serious side effects, adherence education, and knowledge of dangerous drug interactions. These are high-yield NCLEX topics.</p>
+
+  <div id="med-container"></div>
+</div>
+
+<!-- ══════ S10: ISOLATION/PPE ══════ -->
+<div class="sec" id="s10">
+  <div class="sec-label">Section 10</div>
+  <h2 class="sec-title">Isolation Precautions & PPE</h2>
+  <p class="sec-sub">Master all four precaution levels, understand the rationale for each, and practice matching diseases to their correct precautions. PPE selection is one of the most tested topics on NCLEX.</p>
+
+  <div id="iso-container"></div>
+
+  <div class="card" style="margin-top:16px">
+    <h3 style="color:var(--navy);margin-bottom:6px;font-size:1rem">🎮 Match the Disease to the Correct Precaution Level</h3>
+    <p style="font-size:.84rem;color:var(--ink3);margin-bottom:14px">Click the correct precaution for each disease. Score yourself and review explanations.</p>
+    <div class="score-banner">
+      <div><div class="sb-num" id="match-score">0</div><div class="sb-lbl">Correct</div></div>
+      <div style="flex:1">
+        <div style="font-size:.8rem;opacity:.85;margin-bottom:4px"><span id="match-att">0</span> of <span id="match-tot">10</span> answered</div>
+        <div class="prog-bar"><div class="prog-fill" id="match-prog" style="width:0%"></div></div>
+      </div>
+      <button onclick="resetMatch()" style="background:rgba(255,255,255,.2);color:#fff;border:2px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:14px;font-weight:700;cursor:pointer;font-size:.8rem;font-family:'Nunito',sans-serif">↺ Reset</button>
+    </div>
+    <div id="match-game"></div>
+  </div>
+</div>
+
+<script>
+// NAV
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',function(){
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.sec').forEach(x=>x.classList.remove('active'));
+  this.classList.add('active');
+  document.getElementById(this.dataset.s).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}));
+function toggleAcc(id){document.getElementById(id).classList.toggle('open')}
+function toggleDC(id){document.getElementById(id).classList.toggle('open')}
+
+// ─── DIAGNOSTICS DATA ───
+const DIAG_DATA=[
+  {name:'CBC / WBC',icon:'🩸',color:'var(--blue)',
+   why:'Evaluates the immune response to infection. WBC count tells us how aggressively the body is fighting.',
+   abnormal:'Leukocytosis (&gt;11,000): bacterial infection. Leukopenia (&lt;4,000): viral, severe sepsis, bone marrow suppression. Bands (immature neutrophils &gt;10%): "left shift" = acute bacterial infection. ANC &lt;500: severe neutropenia — high infection risk.',
+   nursing:'Neutropenia (ANC &lt;500): report ANY fever ≥38°C immediately, initiate neutropenic precautions, do not give live vaccines.',
+   nclex:'A chemo patient has ANC 280 cells/mm³ and temperature 38.1°C. Priority: Report to provider immediately — febrile neutropenia is a medical emergency requiring IV antibiotics STAT.'},
+  {name:'Blood Cultures × 2',icon:'🔴',color:'var(--red)',
+   why:'Identifies the specific bacteria or fungi causing bloodstream infection (bacteremia/sepsis). Guides targeted antibiotic therapy.',
+   abnormal:'Positive culture: identifies organism and sensitivities. Guide antibiotic selection. False positives from contamination are possible.',
+   nursing:'Draw from 2 different sites before antibiotics. Strict aseptic technique. Label correctly with patient ID and time. Do NOT delay antibiotics more than 45 min waiting for cultures in critically ill patients.',
+   nclex:'Priority order: Blood cultures FIRST → then immediate antibiotics. Drawing cultures after antibiotics is started may yield false-negative results.'},
+  {name:'Sputum Culture / AFB Smear',icon:'💨',color:'var(--orange)',
+   why:'AFB smear identifies acid-fast bacilli (TB). Culture confirms organism and drug sensitivities. Essential for TB diagnosis and treatment monitoring.',
+   abnormal:'AFB smear positive: highly suspicious for active TB — isolate immediately. Culture confirms specific mycobacterium species. Takes 3–8 weeks for full TB culture results.',
+   nursing:'Collect 3 consecutive early morning specimens (highest bacterial load). Deep cough technique. Collect BEFORE antibiotics when possible. Negative-pressure room during collection.',
+   nclex:'3 consecutive NEGATIVE AFB sputum smears (on separate days) are required before removing airborne precautions for TB patients.'},
+  {name:'CD4 Count',icon:'🟣',color:'var(--purple)',
+   why:'Measures the number of CD4+ T-helper lymphocytes — the primary target of HIV. Key indicator of immune status and progression to AIDS.',
+   abnormal:'Normal: 500–1500 cells/mm³. &lt;500: immune compromise begins. &lt;350: start ART. &lt;200: AIDS definition + start PCP prophylaxis. &lt;100: start toxoplasmosis prophylaxis. &lt;50: highest risk — start MAC prophylaxis.',
+   nursing:'Drawn along with viral load every 3–6 months. Guide prophylaxis decisions. Teach patient what their count means for their risk level.',
+   nclex:'CD4 &lt;200 = AIDS. Start TMP-SMX (Bactrim) for PCP prophylaxis. CD4 &lt;50 = high CMV retinitis and MAC risk — assess for vision changes and systemic symptoms.'},
+  {name:'Viral Load (HIV RNA)',icon:'📈',color:'var(--purple)',
+   why:'Measures how many HIV copies are present per mL of blood. Indicates how actively HIV is replicating. Primary marker of ART effectiveness.',
+   abnormal:'Goal: undetectable (&lt;20–50 copies/mL). Undetectable = treatment working + cannot sexually transmit. Detectable or rising = non-adherence or resistance.',
+   nursing:'Monitor every 3–6 months. Rising viral load on ART = assess adherence first, then possible resistance testing.',
+   nclex:'Undetectable viral load = (1) ART is working, (2) cannot sexually transmit HIV. Does NOT mean cured — stopping ART causes viral rebound.'},
+  {name:'Hepatitis Serology',icon:'🟡',color:'var(--amber)',
+   why:'Diagnoses type of hepatitis and determines immunity, active infection, chronic carrier status, or recovery.',
+   abnormal:'Anti-HAV IgM = acute Hep A. HBsAg = active HBV or carrier. HBsAb = immune to HBV. Anti-HCV = HCV exposure. HCV RNA = active HCV replication.',
+   nursing:'Explain meaning to patient. Standard precautions for all blood draws. Report confirmed viral hepatitis to public health as required. Monitor ALT, AST.',
+   nclex:'HBsAg+ = patient is infected/carrier. HBsAb+ = immune (vaccinated or recovered from infection). Know the difference — this is a common NCLEX serology question.'},
+  {name:'Liver Function Tests (LFTs)',icon:'🫀',color:'var(--amber)',
+   why:'Assess liver health. Critical for hepatitis patients and for monitoring hepatotoxic drug therapy (TB meds, ART, antifungals).',
+   abnormal:'Elevated ALT and AST = hepatocellular damage (hepatitis, drug toxicity). Elevated bilirubin = impaired bile processing → jaundice. Elevated alkaline phosphatase = biliary disease.',
+   nursing:'Baseline LFTs before starting RIPE therapy, ART, antifungals. Monthly monitoring during TB treatment. Report significant elevation (3–5× normal) → hold hepatotoxic medication.',
+   nclex:'Patient on TB RIPE therapy reports fatigue, nausea, and yellow skin. Action: HOLD medications, notify provider, draw LFTs — hepatotoxicity is the likely cause.'},
+  {name:'TB Skin Test (TST/Mantoux)',icon:'💉',color:'var(--orange)',
+   why:'Screens for TB exposure and latent TB infection. Read 48–72 hours after intradermal injection.',
+   abnormal:'Measure the INDURATION (raised, firm area) — NOT redness. ≥5mm: HIV+ or immunocompromised or close TB contact. ≥10mm: high-risk groups (immigrants from high-prevalence countries, healthcare workers, prisoners). ≥15mm: low-risk persons.',
+   nursing:'Administer intradermally on forearm (NOT subcutaneous). Return in 48–72 hours to read. Measure with ruler in millimeters. Record induration size (not just positive/negative). BCG vaccine causes false positives — use IGRA instead.',
+   nclex:'The nurse measures 8mm induration in an HIV+ patient. This is POSITIVE (&gt;5mm threshold for HIV+ patients). Next step: rule out active TB with CXR and sputum testing before treating latent TB.'},
+  {name:'IGRA (QuantiFERON-TB Gold)',icon:'🔬',color:'var(--orange)',
+   why:'Blood test for TB exposure. Preferred over TST for patients who received BCG vaccine (no false positives) and patients unlikely to return for TST reading.',
+   abnormal:'Positive result: exposure to M. tuberculosis. Does NOT distinguish latent from active TB — requires clinical correlation + CXR.',
+   nursing:'Single blood draw — no return visit needed. Not affected by prior BCG vaccination (unlike TST). Refrigerate appropriately and transport promptly.',
+   nclex:'BCG-vaccinated patient needs TB screening — use IGRA (QuantiFERON), NOT TST, to avoid false-positive results from BCG.'},
+  {name:'Lactate Level',icon:'🔺',color:'var(--red)',
+   why:'Measures cellular hypoxia — when organs don\'t get enough oxygen, cells produce lactate as a byproduct. Key sepsis diagnostic and prognostic marker.',
+   abnormal:'Normal: &lt;2 mmol/L. 2–4 mmol/L: tissue hypoperfusion — escalate. ≥4 mmol/L: severe hypoperfusion = septic shock territory → highest mortality risk.',
+   nursing:'Draw with sepsis bundle. Repeat every 2 hours if elevated. Declining lactate = improving perfusion with treatment. Static or rising lactate despite treatment = poor prognosis.',
+   nclex:'Lactate 4.2 mmol/L in a febrile hypotensive patient = septic shock. Priority: IV fluid bolus 30 mL/kg + broad-spectrum antibiotics within 1 hour. Vasopressors if MAP remains &lt;65 after fluids.'},
+  {name:'Lumbar Puncture (CSF Analysis)',icon:'🧪',color:'var(--blue)',
+   why:'Essential for diagnosing meningitis, encephalitis, and subarachnoid hemorrhage. CSF analysis identifies the organism causing central nervous system infection.',
+   abnormal:'Normal CSF: clear, colorless. Bacterial meningitis: cloudy/turbid, ↑WBC (neutrophils), ↑protein, ↓glucose. Viral meningitis: clear, ↑WBC (lymphocytes), normal/slightly ↑protein, normal glucose.',
+   nursing:'Pre-procedure: assess for signs of increased ICP (papilledema, altered LOC) — if present, CT FIRST. Position: lateral recumbent (fetal position) or sitting forward. Post-procedure: flat for 1–2 hours, encourage fluids (reduces post-LP headache), assess for bleeding, neurological changes.',
+   nclex:'CT head must be obtained FIRST if signs of increased ICP before LP — otherwise herniation can occur. Position patient in fetal position or sitting forward for LP. Post-LP: flat, fluids for spinal headache.'},
+];
+
+function buildDiag(){
+  const el=document.getElementById('diag-container');
+  if(!el)return;
+  DIAG_DATA.forEach((d,i)=>{
+    const acc=document.createElement('div');
+    acc.className='acc';
+    acc.id='diag-'+i;
+    acc.innerHTML=`<div class="acc-hd" onclick="toggleAcc('diag-${i}')">
+      <span>${d.icon} ${d.name}</span>
+      <span class="acc-arr">▼</span>
+    </div>
+    <div class="acc-body">
+      <div class="g2">
+        <div>
+          <div class="lbl">Why Ordered</div>
+          <div style="font-size:.86rem;margin-bottom:8px">${d.why}</div>
+          <div class="lbl">Abnormal Findings</div>
+          <div style="font-size:.86rem">${d.abnormal}</div>
+        </div>
+        <div>
+          <div class="lbl">Nursing Preparation & Considerations</div>
+          <div style="font-size:.86rem;margin-bottom:8px">${d.nursing}</div>
+          <div class="nclex-hint"><div class="nclex-hint-title">📘 NCLEX Connection</div>${d.nclex}</div>
+        </div>
+      </div>
+    </div>`;
+    el.appendChild(acc);
+  });
+}
+
+// ─── MEDICATION DATA ───
+const MED_DATA=[
+  {cat:'Antiretroviral Therapy (ART) — HIV',color:'var(--purple)',icon:'💜',items:[
+    {name:'TDF/FTC + Dolutegravir (Biktarvy, Triumeq-based regimens)',
+     use:'Current preferred first-line ART. Combines backbone (NRTI) + integrase inhibitor in one pill.',
+     se:'Generally well-tolerated. Weight gain (long-term), nausea (initial). Dolutegravir: insomnia, headache.',
+     monitor:'Renal function (tenofovir), LFTs, CD4 count, viral load q3–6 months.',
+     teach:'Take at the same time every day. NEVER skip doses. One missed dose allows HIV replication. Set a daily alarm. Discuss side effects with provider — options exist.'},
+    {name:'PrEP (Truvada, Descovy) — HIV Prevention',
+     use:'Pre-exposure prophylaxis for HIV-negative high-risk individuals. Reduces HIV acquisition risk by &gt;99% when taken daily.',
+     se:'Renal and bone effects (tenofovir-DF). GI upset (initial, usually resolves).',
+     monitor:'HIV test before starting and every 3 months. Renal function. STI screening q3 months.',
+     teach:'Must take EVERY DAY for maximum protection. Does not protect against other STIs — use condoms. Regular HIV testing required. If you test positive, notify provider immediately.'},
+  ]},
+  {cat:'TB Medications (RIPE)',color:'var(--orange)',icon:'🟠',items:[
+    {name:'Rifampin (Rifampicin)',
+     use:'Bactericidal against TB. Essential component of all TB regimens.',
+     se:'Orange-red discoloration of all body fluids (urine, tears, sweat, saliva). Hepatotoxicity. Major drug-drug interactions (enzyme inducer).',
+     monitor:'LFTs monthly. Drug interactions (reduces effectiveness of OCP, warfarin, many others).',
+     teach:'Fluids will turn orange/red — this is NORMAL and expected. May stain soft contact lenses permanently. Warn sexual partners about colored fluids. Tell ALL providers you are on rifampin.'},
+    {name:'Isoniazid (INH)',
+     use:'Bactericidal against TB. Mainstay of all TB and latent TB treatment.',
+     se:'Peripheral neuropathy (numbness/tingling in hands and feet), hepatotoxicity, drug-induced lupus.',
+     monitor:'LFTs monthly. Neurological symptoms. No alcohol.',
+     teach:'ALWAYS take pyridoxine (B6 vitamin) with INH to prevent neuropathy. Report any numbness or tingling immediately. Absolutely no alcohol. Take exactly as prescribed for full duration.'},
+    {name:'Pyrazinamide',
+     use:'Bactericidal. Used in first 2 months of TB treatment for sterilizing activity.',
+     se:'Hepatotoxicity (most significant), hyperuricemia (can trigger gout flares), photosensitivity.',
+     monitor:'LFTs monthly. Uric acid levels. Joint pain (gout signs).',
+     teach:'Report joint pain, swelling, or redness (possible gout). No alcohol. Monthly LFT monitoring required. Sun protection — photosensitivity possible.'},
+    {name:'Ethambutol',
+     use:'Bacteriostatic. Used in combination to prevent drug resistance development.',
+     se:'OPTIC NEURITIS — decreased visual acuity, red-green color blindness. Usually reversible if caught early.',
+     monitor:'Monthly visual acuity testing. Monthly color vision (red-green discrimination) testing.',
+     teach:'Report ANY changes in vision or difficulty seeing colors IMMEDIATELY. Vision changes require stopping the drug. Do not skip vision follow-up appointments.'},
+  ]},
+  {cat:'Antibiotics — High-Yield Classes',color:'var(--green)',icon:'💊',items:[
+    {name:'Vancomycin (Glycopeptide)',
+     use:'First-line for MRSA, VRE infections (IV form). Oral vancomycin for C. diff (NOT absorbed systemically).',
+     se:'Red Man Syndrome (flushing, erythema — too-rapid infusion, NOT a true allergy). Nephrotoxicity. Ototoxicity.',
+     monitor:'Trough levels (10–20 mcg/mL; 15–20 for serious infections) before 4th dose. Renal function daily. Hearing.',
+     teach:'Infuse over at least 60 minutes to prevent Red Man Syndrome. Report ringing in ears or hearing changes. Stay hydrated.'},
+    {name:'Metronidazole (Flagyl)',
+     use:'C. diff (mild cases), anaerobic infections, bacterial vaginosis, trichomoniasis.',
+     se:'Metallic taste, nausea. DISULFIRAM-LIKE REACTION with alcohol (severe nausea, vomiting, flushing).',
+     monitor:'Signs of peripheral neuropathy with prolonged use.',
+     teach:'ABSOLUTELY NO ALCOHOL for 48–72 hours after completion — can cause severe reaction even days after stopping. Report any numbness or tingling.'},
+    {name:'Linezolid (Oxazolidinone)',
+     use:'MRSA (including vancomycin-resistant strains), VRE infections. Reserve drug — use when others fail.',
+     se:'Thrombocytopenia, anemia, peripheral neuropathy. SEROTONIN SYNDROME if combined with SSRIs/SNRIs/MAOIs.',
+     monitor:'CBC weekly (platelet count critical). Signs of serotonin syndrome (hyperthermia, rigidity, agitation, rapid pulse).',
+     teach:'Avoid tyramine-rich foods (aged cheese, cured meats, red wine). Report fever, confusion, agitation (serotonin syndrome). Report bruising or unusual bleeding (thrombocytopenia).'},
+    {name:'Beta-Lactams (Penicillins, Cephalosporins, Carbapenems)',
+     use:'Broad-spectrum antibiotics. Carbapenems (meropenem, imipenem) for severe sepsis, resistant organisms.',
+     se:'Allergic reactions (rash → anaphylaxis). Cross-reactivity between penicillin and cephalosporins (10% cross-reactivity). Superinfection (C. diff risk).',
+     monitor:'Signs of allergy (rash, urticaria, dyspnea). Monitor for C. diff with prolonged use.',
+     teach:'Complete FULL antibiotic course. Report any rash or difficulty breathing immediately. Notify all providers of penicillin allergy — affects many antibiotic choices.'},
+  ]},
+  {cat:'Antivirals',color:'var(--teal)',icon:'🔵',items:[
+    {name:'Oseltamivir (Tamiflu)',
+     use:'Treatment and prevention of influenza A and B. Most effective when started within 48 hours of symptom onset.',
+     se:'Nausea, vomiting (take with food to minimize).',
+     monitor:'Symptom response. Effectiveness decreases after 48 hours of illness onset.',
+     teach:'Start as soon as possible after symptom onset — within 48 hours for best effect. Still beneficial in severe illness or high-risk patients even after 48 hours. Take with food if nauseous.'},
+    {name:'Acyclovir / Valacyclovir',
+     use:'Herpes simplex virus, varicella-zoster virus, EBV infections.',
+     se:'Nephrotoxicity with IV acyclovir (especially with rapid infusion or dehydration). Nausea.',
+     monitor:'Renal function with IV form. Hydration status.',
+     teach:'IV acyclovir: maintain excellent hydration to prevent crystallization in kidneys. Cannot cure herpes — reduces outbreak severity and frequency. Valacyclovir (oral) for outpatient herpes management.'},
+  ]},
+  {cat:'Antifungals',color:'var(--purple)',icon:'🍄',items:[
+    {name:'Fluconazole (Azole)',
+     use:'Candidiasis (oral, esophageal, vaginal, systemic). Cryptococcal meningitis suppression.',
+     se:'Hepatotoxicity. QT prolongation. Significant drug-drug interactions (warfarin, many others).',
+     monitor:'LFTs. Drug interactions — check carefully. QTc if on other QT-prolonging drugs.',
+     teach:'Report signs of liver damage (jaundice, dark urine, abdominal pain). May affect many other medications — inform pharmacist and all providers.'},
+    {name:'Amphotericin B (Ampho B)',
+     use:'Serious fungal infections: cryptococcal meningitis, invasive aspergillosis, severe candidiasis. Used when azoles fail.',
+     se:'"Ampho-terrible" — classic side effects: fever, chills, rigors (infusion-related). Nephrotoxicity. Hypokalemia. Hypomagnesemia.',
+     monitor:'Renal function before EVERY dose. Electrolytes (K+, Mg++) daily. Temperature during infusion.',
+     teach:'Pre-medicate with acetaminophen + diphenhydramine + hydration to reduce infusion reactions. Maintain excellent hydration. Report decreased urine output immediately.'},
+  ]},
+];
+
+function buildMeds(){
+  const el=document.getElementById('med-container');
+  if(!el)return;
+  MED_DATA.forEach((cat,ci)=>{
+    const section=document.createElement('div');
+    section.className='card';section.style.marginBottom='16px';
+    section.innerHTML=`<h3 style="color:${cat.color};margin-bottom:14px;font-size:1rem">${cat.icon} ${cat.cat}</h3><div id="medcat-${ci}"></div>`;
+    el.appendChild(section);
+    const cont=section.querySelector(`#medcat-${ci}`);
+    cat.items.forEach((med,mi)=>{
+      const id=`med-${ci}-${mi}`;
+      const acc=document.createElement('div');
+      acc.className='acc';acc.id=id;
+      acc.innerHTML=`<div class="acc-hd" onclick="toggleAcc('${id}')"><span>${med.name}</span><span class="acc-arr">▼</span></div>
+        <div class="acc-body">
+          <div class="g2">
+            <div>
+              <div class="lbl">What It Does / Use</div><div style="font-size:.86rem;margin-bottom:8px">${med.use}</div>
+              <div class="lbl">Key Side Effects</div><div style="font-size:.86rem">${med.se}</div>
+            </div>
+            <div>
+              <div class="lbl">What to Monitor</div><div style="font-size:.86rem;margin-bottom:8px">${med.monitor}</div>
+              <div class="ib-green"><strong>Patient Teaching:</strong> ${med.teach}</div>
+            </div>
+          </div>
+        </div>`;
+      cont.appendChild(acc);
+    });
+  });
+}
+
+// ─── ISOLATION PPE ───
+function buildIso(){
+  const el=document.getElementById('iso-container');
+  if(!el)return;
+  const levels=[
+    {cls:'iso-std',title:'🛡️ STANDARD PRECAUTIONS',color:'#92400e',
+     sub:'Used for ALL patients, ALL care, ALL the time — regardless of diagnosis',
+     items:['Hand hygiene before and after ALL patient contact — most important infection control measure','Gloves — when touching blood, body fluids, mucous membranes, or non-intact skin','Gown — when splashing or soiling of clothing is anticipated','Mask + eye protection — when face exposure to splashing blood or body fluids is possible','Safe sharps handling — NEVER recap needles two-handed; use safety devices','Respiratory hygiene/cough etiquette — surgical mask on coughing patients','Safe injection practices — never reuse needles or syringes']},
+    {cls:'iso-air',title:'✈️ AIRBORNE PRECAUTIONS',color:var('--red'),
+     sub:'Particles <5 µm — stay suspended in air, travel throughout room',
+     items:['Private negative-pressure room (6–12 air exchanges per hour, air exhausted outside)','Door must remain CLOSED at all times','N95 respirator (HEPA-fitted, fit-tested) for ALL staff entering the room','Susceptible visitors also wear N95 (immune staff may not need)','Patient wears surgical mask when leaving room for transport','Limit patient transport to essential procedures only','Diseases: Active TB, Measles, Varicella, Disseminated Herpes Zoster']},
+    {cls:'iso-drop',title:'💧 DROPLET PRECAUTIONS',color:'var(--blue)',
+     sub:'Particles >5 µm — fall within 3 feet, do NOT remain suspended',
+     items:['Private room or cohort with same infection (door may remain open)','Surgical/procedure mask for staff working within 3 feet of patient','Mask placed on patient for transport','Gloves and gown per standard precautions','Spatial separation of &gt;3 feet from other patients if cohort or open ward','Diseases: Influenza, Bacterial Meningitis, Pertussis, Mumps, Rubella, RSV']},
+    {cls:'iso-contact',title:'🤚 CONTACT PRECAUTIONS',color:'var(--green)',
+     sub:'Spread by direct or indirect contact with patient or environment',
+     items:['Gown and gloves upon entering the room (BEFORE touching the patient or environment)','Remove PPE carefully BEFORE leaving the room','Dedicated equipment in room (stethoscope, BP cuff, thermometer, pulse oximeter)','Hand hygiene after removing PPE','C. diff: SOAP AND WATER only — alcohol rub does NOT kill spores','MRSA/VRE: either soap and water or alcohol hand rub acceptable','Enhanced environmental cleaning with appropriate disinfectants','Diseases: C. diff, MRSA, VRE, wound infections, RSV (+ droplet), norovirus']},
+    {cls:'iso-neut',title:'🔄 NEUTROPENIC (PROTECTIVE) PRECAUTIONS',color:'var(--purple)',
+     sub:'Protects the immunocompromised patient FROM the environment — REVERSE isolation',
+     items:['Staff and visitors MUST be free of illness before entering room','Positive air pressure room (filtered air flows OUT — prevents environmental organisms entering)','All staff and visitors perform meticulous hand hygiene before entering','N95 for staff during environmental construction/renovation (Aspergillus spore risk)','No fresh flowers, plants, or potted soil in room','No raw fruits, vegetables, or undercooked foods','Screen ALL visitors — no one who is ill may visit','No live vaccines for the patient while neutropenic','Strict hand hygiene by EVERYONE entering the room']},
+  ];
+
+  levels.forEach(l=>{
+    const d=document.createElement('div');
+    d.className=`iso-card ${l.cls}`;
+    d.innerHTML=`<div class="iso-title">${l.title}</div>
+      <div style="font-size:.8rem;font-weight:700;margin-bottom:10px;opacity:.8">${l.sub}</div>
+      <ul class="lst">${l.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+    el.appendChild(d);
+  });
+}
+
+// ─── MATCHING GAME ───
+const MATCH_DATA=[
+  {disease:'Active Tuberculosis',correct:'Airborne',opts:['Airborne','Droplet','Contact','Standard'],rationale:'TB produces tiny airborne droplet nuclei <5µm that stay suspended in air. Requires N95 + negative-pressure room.'},
+  {disease:'Influenza',correct:'Droplet',opts:['Airborne','Droplet','Contact','Standard'],rationale:'Influenza spreads by droplets >5µm that fall within 3 feet. Surgical mask sufficient — NOT N95.'},
+  {disease:'C. difficile',correct:'Contact',opts:['Airborne','Droplet','Contact','Standard'],rationale:'C. diff spreads by fecal-oral contact with spores. Contact precautions + SOAP AND WATER handwashing.'},
+  {disease:'MRSA wound infection',correct:'Contact',opts:['Airborne','Droplet','Contact','Standard'],rationale:'MRSA spreads by direct contact with wound drainage. Gown and gloves required. Alcohol hand rub is effective (unlike C. diff).'},
+  {disease:'Bacterial Meningitis',correct:'Droplet',opts:['Airborne','Droplet','Contact','Standard'],rationale:'Bacterial meningitis (N. meningitidis) spreads by respiratory droplets >5µm. Surgical mask required.'},
+  {disease:'HIV (bloodborne exposure)',correct:'Standard',opts:['Airborne','Droplet','Contact','Standard'],rationale:'HIV is bloodborne — only standard precautions needed. NOT airborne, NOT droplet, NOT contact spread.'},
+  {disease:'Varicella (Chickenpox)',correct:'Airborne + Contact',opts:['Airborne + Contact','Droplet','Contact','Standard'],rationale:'Varicella is both airborne AND contact (vesicular lesions). Requires N95 + negative-pressure room + contact precautions.'},
+  {disease:'VRE (colonized patient)',correct:'Contact',opts:['Airborne','Droplet','Contact','Standard'],rationale:'VRE spreads by contact. Gown and gloves required. Cannot use vancomycin for treatment.'},
+  {disease:'Measles (Rubeola)',correct:'Airborne',opts:['Airborne','Droplet','Contact','Standard'],rationale:'Measles is airborne — among the most contagious airborne pathogens. N95 + negative-pressure room required.'},
+  {disease:'Hepatitis C',correct:'Standard',opts:['Airborne','Droplet','Contact','Standard'],rationale:'Hepatitis C is bloodborne — standard precautions protect healthcare workers. No special room or mask required.'},
+];
+
+let matchScore=0,matchAtt=0;
+const matchAnswered=new Set();
+
+function buildMatchGame(){
+  const el=document.getElementById('match-game');
+  if(!el)return;
+  document.getElementById('match-tot').textContent=MATCH_DATA.length;
+  MATCH_DATA.forEach((m,i)=>{
+    const row=document.createElement('div');row.className='match-row';
+    row.id='match-row-'+i;
+    row.innerHTML=`<div class="match-disease">${i+1}. ${m.disease}</div>
+      <div class="match-opts" id="mo-${i}">
+        ${m.opts.map(opt=>`<button class="mbtn" onclick="answerMatch(${i},'${opt}',this)">${opt}</button>`).join('')}
+      </div>
+      <div id="match-res-${i}" style="font-size:.8rem;font-weight:700;min-width:50px"></div>`;
+    el.appendChild(row);
+    const ratDiv=document.createElement('div');
+    ratDiv.id='match-rat-'+i;
+    ratDiv.style.cssText='display:none;padding:8px 12px;font-size:.82rem;color:var(--ink2);background:#f8fafc;border-radius:var(--r-sm);margin-bottom:8px;border-left:3px solid var(--navy)';
+    el.appendChild(ratDiv);
+  });
+}
+
+function answerMatch(i,chosen,btn){
+  if(matchAnswered.has(i))return;
+  matchAnswered.add(i);matchAtt++;
+  const m=MATCH_DATA[i];
+  const opts=document.getElementById('mo-'+i);
+  opts.querySelectorAll('.mbtn').forEach(b=>b.disabled=true);
+  const res=document.getElementById('match-res-'+i);
+  const rat=document.getElementById('match-rat-'+i);
+  if(chosen===m.correct){
+    btn.classList.add('correct');res.innerHTML='✅';res.style.color='var(--green)';matchScore++;
+  } else {
+    btn.classList.add('wrong');res.innerHTML='❌';res.style.color='var(--red)';
+    opts.querySelectorAll('.mbtn').forEach(b=>{if(b.textContent===m.correct)b.classList.add('reveal');});
+  }
+  rat.style.display='block';rat.innerHTML='<strong>Rationale:</strong> '+m.rationale;
+  document.getElementById('match-score').textContent=matchScore;
+  document.getElementById('match-att').textContent=matchAtt;
+  document.getElementById('match-prog').style.width=(matchAtt/MATCH_DATA.length*100)+'%';
+}
+
+function resetMatch(){
+  matchScore=0;matchAtt=0;matchAnswered.clear();
+  document.getElementById('match-score').textContent=0;
+  document.getElementById('match-att').textContent=0;
+  document.getElementById('match-prog').style.width='0%';
+  buildMatchGameClean();
+}
+
+function buildMatchGameClean(){
+  const el=document.getElementById('match-game');
+  el.innerHTML='';
+  document.getElementById('match-tot').textContent=MATCH_DATA.length;
+  buildMatchGame();
+}
+
+function var_(v){return v}
+
+// INIT
+window.addEventListener('DOMContentLoaded',()=>{
+  buildDiag();
+  buildMeds();
+  buildIso();
+  buildMatchGame();
+});
+</script>
+</body>
+</html>
